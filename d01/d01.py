@@ -7,15 +7,14 @@ PROD = 'input.txt'
 
 def parse_file(path_to_file: str) -> List:
     with open(path_to_file) as f:
-        return [line.rstrip('\n') for line in f.readlines()]
+        return [line.rstrip('\n').split() for line in f.readlines()]
 
 
 def get_transpose_data(data: List) -> (List, List):
     first_list, second_list = [], []
     for el in data:
-        parts = el.split()
-        first_list.append(int(parts[0]))
-        second_list.append(int(parts[1]))
+        first_list.append(int(el[0]))
+        second_list.append(int(el[1]))
 
     return sorted(first_list), sorted(second_list)
 
